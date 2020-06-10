@@ -1,0 +1,66 @@
+﻿
+<style type="text/css">
+    .help-block {
+        color: red;
+    }
+</style>
+
+<div id="myModel" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4>Add New Member</h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-horizontal">
+                    <form id="frmMember">
+                        <div class="row">
+                            <input type="hidden" id="hddnId" name="hddnId" value="0" />
+                            <div class="col-md-12">
+                                <div class="col-md-6 form-group">
+                                    <label for="txtMName" class="col-sm-4 control-label">Member Name</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" id="txtMName" name="txtMName" class="form-control" placeholder="Member name" />
+                                    </div>
+                                </div>
+                                <div class="col-md-6 form-group">
+                                    <label for="txtDOB" class="col-sm-4 control-label">Date of birth </label>
+                                    <div class="col-sm-8">
+                                        <input type="text" id="txtDOB" name="txtDOB" class="form-control" placeholder="Date of birth" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="col-md-6 form-group">
+                                    <label for="txtQualification" class="col-sm-4 control-label"> Qualification </label>
+                                    <div class="col-sm-8">
+                                        <input type="text" id="txtQualification" name="txtQualification" class="form-control" placeholder="Qualification" />
+                                    </div>
+                                </div>
+                                <div class="col-md-6 form-group">
+                                    <label for="txtYearsOfExperience" class="control-label col-sm-4">Years Of Experience</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" id="txtYearsOfExperience" name="txtYearsOfExperience" class="form-control" placeholder="Years Of Experience" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="col-md-6 form-group">
+                                    <label for="divTechnologies" class="col-sm-4 control-label">Technologies </label>
+                                    <div class="col-sm-8">
+                                        <select id="ddlTechnologies" name="ddlTechnologies" class="form-control"></select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" id="btnResetMember" onclick="resetAllProperties();">Reset</button>
+                <button type="button" class="btn btn-success" id="btnSaveMember" onclick="SaveMethod();">Save Member</button>
+            </div>
+        </div>
+    </div>
+</div>

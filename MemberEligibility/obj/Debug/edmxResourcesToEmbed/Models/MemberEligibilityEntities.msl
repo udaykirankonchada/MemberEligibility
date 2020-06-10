@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="MemberEligibilityModelStoreContainer" CdmEntityContainer="MemberEligibilityEntities">
+    <EntitySetMapping Name="MemberEntities">
+      <EntityTypeMapping TypeName="MemberEligibilityModel.MemberEntity">
+        <MappingFragment StoreEntitySet="MemberEntity">
+          <ScalarProperty Name="YearsOfExperience" ColumnName="YearsOfExperience" />
+          <ScalarProperty Name="Qualification" ColumnName="Qualification" />
+          <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+          <ScalarProperty Name="TechnologyID" ColumnName="TechnologyID" />
+          <ScalarProperty Name="MemberName" ColumnName="MemberName" />
+          <ScalarProperty Name="MemberID" ColumnName="MemberID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TechnologyEntities">
+      <EntityTypeMapping TypeName="MemberEligibilityModel.TechnologyEntity">
+        <MappingFragment StoreEntitySet="TechnologyEntity">
+          <ScalarProperty Name="TechnologyName" ColumnName="TechnologyName" />
+          <ScalarProperty Name="TechnologyID" ColumnName="TechnologyID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

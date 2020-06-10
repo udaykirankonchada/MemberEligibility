@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="MemberEligibilityModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="MemberEligibilityEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="MemberEntities" EntityType="MemberEligibilityModel.MemberEntity" />
+    <EntitySet Name="TechnologyEntities" EntityType="MemberEligibilityModel.TechnologyEntity" />
+    <AssociationSet Name="fk_MemberEntity_TechnologyID" Association="MemberEligibilityModel.fk_MemberEntity_TechnologyID">
+      <End Role="TechnologyEntity" EntitySet="TechnologyEntities" />
+      <End Role="MemberEntity" EntitySet="MemberEntities" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="MemberEntity">
+    <Key>
+      <PropertyRef Name="MemberID" />
+    </Key>
+    <Property Name="MemberID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MemberName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="TechnologyID" Type="Int32" />
+    <Property Name="DateOfBirth" Type="DateTime" Precision="3" />
+    <Property Name="Qualification" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="YearsOfExperience" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+    <NavigationProperty Name="TechnologyEntity" Relationship="MemberEligibilityModel.fk_MemberEntity_TechnologyID" FromRole="MemberEntity" ToRole="TechnologyEntity" />
+  </EntityType>
+  <EntityType Name="TechnologyEntity">
+    <Key>
+      <PropertyRef Name="TechnologyID" />
+    </Key>
+    <Property Name="TechnologyID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TechnologyName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="MemberEntities" Relationship="MemberEligibilityModel.fk_MemberEntity_TechnologyID" FromRole="TechnologyEntity" ToRole="MemberEntity" />
+  </EntityType>
+  <Association Name="fk_MemberEntity_TechnologyID">
+    <End Type="MemberEligibilityModel.TechnologyEntity" Role="TechnologyEntity" Multiplicity="0..1" />
+    <End Type="MemberEligibilityModel.MemberEntity" Role="MemberEntity" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TechnologyEntity">
+        <PropertyRef Name="TechnologyID" />
+      </Principal>
+      <Dependent Role="MemberEntity">
+        <PropertyRef Name="TechnologyID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

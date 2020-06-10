@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="MemberEligibilityModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="MemberEntity">
+    <Key>
+      <PropertyRef Name="MemberID" />
+    </Key>
+    <Property Name="MemberID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MemberName" Type="nvarchar" MaxLength="50" />
+    <Property Name="TechnologyID" Type="int" />
+    <Property Name="DateOfBirth" Type="datetime" />
+    <Property Name="Qualification" Type="varchar" MaxLength="50" />
+    <Property Name="YearsOfExperience" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TechnologyEntity">
+    <Key>
+      <PropertyRef Name="TechnologyID" />
+    </Key>
+    <Property Name="TechnologyID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TechnologyName" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <Association Name="fk_MemberEntity_TechnologyID">
+    <End Role="TechnologyEntity" Type="Self.TechnologyEntity" Multiplicity="0..1" />
+    <End Role="MemberEntity" Type="Self.MemberEntity" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TechnologyEntity">
+        <PropertyRef Name="TechnologyID" />
+      </Principal>
+      <Dependent Role="MemberEntity">
+        <PropertyRef Name="TechnologyID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="MemberEligibilityModelStoreContainer">
+    <EntitySet Name="MemberEntity" EntityType="Self.MemberEntity" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TechnologyEntity" EntityType="Self.TechnologyEntity" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="fk_MemberEntity_TechnologyID" Association="Self.fk_MemberEntity_TechnologyID">
+      <End Role="TechnologyEntity" EntitySet="TechnologyEntity" />
+      <End Role="MemberEntity" EntitySet="MemberEntity" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
